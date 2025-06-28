@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ocean Image Restoration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(to bottom, #3674B5, #3674B5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 120%;
+            max-height: 70vh;
+            z-index: -1;
+            animation: floatWave 20s infinite linear;
+        }
+
+        @keyframes floatWave {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-20px); }
+            100% { transform: translateX(0); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            background: #fff;
+            color: #333;
+            border-radius: 8px;
+            width: 100%;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #00c6fb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #009ec3;
+        }
+    </style>
+</head>
+<body>
+    <img src="templates/ocean-wave-illustration-vector.jpg" class="background-wave" alt="Wave Background">
+
+    <div class="container">
+        <h1>Upload Your Underwater Image</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <br><br>
+            <button type="submit">Restore Image</button>
+        </form>
+    </div>
+</body>
+</html>
